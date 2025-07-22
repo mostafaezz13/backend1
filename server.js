@@ -25,13 +25,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // DB Connection
-
 const db = mysql.createConnection({
-  host: url.hostname,
-  user: url.username,
-  password: url.password,
-  database: url.pathname.replace("/", ""),
-  port: url.port,
+  host: 'mysql.railway.internal',
+  user: 'root',
+  password: 'QDLuDGbjHNYAEXxSGmJVCRDjaTNuBHnU',
+  database: "railway",
+  port: 3306
 });
 
 db.connect((err) => {
@@ -39,8 +38,8 @@ db.connect((err) => {
   console.log("✅ MySQL Connected!");
 });
 
-// Add Product
 
+// Add Product
 app.post("/products", upload.single("image"), (req, res) => {
   const { title, description, price, category_id } = req.body;
   const image_url = req.file
