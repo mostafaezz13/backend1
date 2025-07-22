@@ -25,11 +25,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // DB Connection
+
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
+  host: url.hostname,
+  user: url.username,
+  password: url.password,
+  database: url.pathname.replace("/", ""),
+  port: url.port,
 });
 
 db.connect((err) => {
