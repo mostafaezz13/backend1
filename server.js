@@ -26,11 +26,11 @@ const upload = multer({ storage });
 
 // DB Connection
 const db = mysql.createConnection({
-  host: 'mysql.railway.internal',
+  host: 'switchback.proxy.rlwy.net',
   user: 'root',
   password: 'QDLuDGbjHNYAEXxSGmJVCRDjaTNuBHnU',
   database: "railway",
-  port: 3306
+  port: 44735
 });
 
 db.connect((err) => {
